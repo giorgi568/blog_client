@@ -1,0 +1,28 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+h3{
+  margin: 0;
+}
+.wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+.postCard{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.postCard:hover{
+  background-color: grey;
+}
+
+.title{
+  align-self: flex-start;
+}

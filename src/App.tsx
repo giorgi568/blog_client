@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import styles from './styles/app.module.css'
 import { DateTime } from 'luxon';
 
 async function fetchPosts() {
@@ -23,7 +24,7 @@ interface postObj {
   author?: authorObj;
   published?: boolean;
   text?: string;
-  timestamp?: string;
+  timestamp: string;
 }
 interface authorObj {
   username?: string;
@@ -40,25 +41,23 @@ function App() {
   }, []);
 
   return (
-    <div className='content'>
+    <div className={styles.content}>
       {posts.map((post: postObj, index: number) => {
         return (
-          <div key={index} className='postCard'>
-            <h3>{post.title}</h3>
-            <p>{post.text}</p>
-            {typeof post.author !== 'undefined' ? (
-              <em>{post.author?.username}</em>
-            ) : (
-              'unknown'
-            )}
-            <br />
-            
-            {/* <em>{post.timestamp}</em> */}
-            <em>
-              {DateTime.fromISO(post.timestamp).toLocaleString(
-                DateTime.DATETIME_MED
+          <div key={index} className={styles.postCard}>
+            <h3 className={styles.title}>{post.title}</h3>
+            <div className={styles.wrapper}>
+              {typeof post.author !== 'undefined' ? (
+                <em>By {post.author?.username}</em>
+              ) : (
+                'unknown'
               )}
-            </em>
+              <em>
+                {DateTime.fromISO(post.timestamp).toLocaleString(
+                  DateTime.DATETIME_MED
+                )}
+              </em>
+            </div>
           </div>
         );
       })}
