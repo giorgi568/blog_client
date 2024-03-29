@@ -22,7 +22,7 @@ a:hover {
 }
 
 body {
-  margin: 0;
+  margin: 5px;
   display: flex;
   place-items: center;
   align-items: flex-start;

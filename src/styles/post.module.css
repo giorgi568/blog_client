@@ -8,6 +8,8 @@
   flex-direction: column;
   /* justify-content: space-between; */
   gap: 20px;
+  border: 1px solid black;
+  padding: 10px;
 }
 .timestamp{
   align-self: flex-end;
@@ -23,7 +25,11 @@
   padding: 20px;
   margin: 0;
   position: sticky;
-  top: 20px;
+  top: 5px;
   background-color: black;
   color: white;
+}
+.comments{
+  margin: 2rem;
+  margin-right: 100%;
 }

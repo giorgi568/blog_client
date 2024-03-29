@@ -51,6 +51,7 @@ function Post() {
           )}
         </em>
       </div>
+      <h3 className={styles.comments}>Comments:</h3>
       <Comment postId={params.id}></Comment>
     </div>
   );
