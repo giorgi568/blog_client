@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import styles from '../styles/post.module.css';
 import { DateTime } from 'luxon';
 import Comment from './Comment';
+import NewComment from './NewComment';
 
 async function fetchPost(postId: string | undefined) {
   try {
@@ -52,6 +53,7 @@ function Post() {
         </em>
       </div>
       <h3 className={styles.comments}>Comments:</h3>
+      <NewComment postId={params.id}></NewComment>
       <Comment postId={params.id}></Comment>
     </div>
   );

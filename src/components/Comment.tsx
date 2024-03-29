@@ -41,7 +41,6 @@ function Comment({ postId }: commentProps) {
     }
     getComments(postId);
   }, [postId]);
-  console.log(comments);
   return (
     <div>
       {comments.map((comment: comment) => {
