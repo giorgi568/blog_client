@@ -3,7 +3,6 @@ import './App.css';
 import styles from './styles/app.module.css';
 import { DateTime } from 'luxon';
 import { Link } from 'react-router-dom';
-// import { useParams } from 'react-router-dom';
 
 async function fetchPosts() {
   try {
@@ -42,9 +41,6 @@ function App() {
     }
     getPosts();
   }, []);
-
-  // const params = useParams();
-  // console.log(params.id);
 
   return (
     <div className={styles.content}>
