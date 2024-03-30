@@ -1,0 +1,27 @@
+.form{
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 2rem;
+  margin-left: 0;
+  gap: 1rem;
+}
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.usernameInput{
+  width: 60%;
+  height: 30px;
+  font-size: 1.5rem;
+  padding: 2px;
+}
+.usernameInput:focus{
+  background-color: black;
+  color: white;
+}
+.username{
+  width: 30%;
+}
