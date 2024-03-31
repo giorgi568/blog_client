@@ -7,11 +7,11 @@ declare global {
   }
 }
 
-interface editorProps{
-  value: string | undefined
+interface editorProps {
+  value: string | undefined;
 }
 
-const TinyMCEEditor = ({value}: editorProps) => {
+const TinyMCEEditor = ({ value }: editorProps) => {
   useEffect(() => {
     window.tinymce.init({
       selector: '#text',
@@ -20,10 +20,12 @@ const TinyMCEEditor = ({value}: editorProps) => {
       width: 500,
       menubar: false,
       statusbar: false,
+      skin: 'oxide-dark',
+      // theme: 'silver',
     });
   }, []);
 
-  return <textarea name='text' id='text' defaultValue={value ? value : ''}/>;
+  return <textarea name='text' id='text' defaultValue={value ? value : ''} />;
 };
 
 export default TinyMCEEditor;

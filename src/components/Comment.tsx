@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { DateTime } from 'luxon';
 import styles from '../styles/comment.module.css';
+import he from 'he';
+import DOMpurify from 'dompurify';
 
 async function fetchComments(postId: string | undefined) {
   try {
@@ -46,7 +48,12 @@ function Comment({ postId }: commentProps) {
       {comments.map((comment: comment) => {
         return (
           <div key={uuidv4()} className={styles.container}>
-            <p className={styles.text}>{comment.text}</p>
+            <p
+              className={styles.text}
+              dangerouslySetInnerHTML={{
+                __html: DOMpurify.sanitize(he.decode(comment.text)),
+              }}
+            ></p>
             <div className={styles.wrapper}>
               <em className={styles.comment}>by {comment.author}</em>
               <em className={styles.timestamp}>
