@@ -14,11 +14,12 @@ function NewComment({ postId }: commentProps) {
         onClick={() => {
           setIsActive(!isActive);
         }}
-        style={{ marginRight: '100%', width: 200 + 'px' }}
+        style={{ width: 200 + 'px', float: 'left' }}
       >
-        Add A New Comment
+        {isActive ? 'Discard' : 'Add A New Comment'}
+    
       </button>
-
+      <br />
       {isActive && (
         <form
           action=''

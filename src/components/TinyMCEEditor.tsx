@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Editor } from 'tinymce';
 
 declare global {
@@ -21,7 +21,6 @@ const TinyMCEEditor = ({ value }: editorProps) => {
       menubar: false,
       statusbar: false,
       skin: 'oxide-dark',
-      // theme: 'silver',
     });
   }, []);
 

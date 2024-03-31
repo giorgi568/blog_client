@@ -44,7 +44,7 @@ function Comment({ postId }: commentProps) {
     getComments(postId);
   }, [postId]);
   return (
-    <div>
+    <div className={styles.comments}>
       {comments.map((comment: comment) => {
         return (
           <div key={uuidv4()} className={styles.container}>
