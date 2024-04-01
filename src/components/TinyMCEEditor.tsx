@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+// import { Editor } from '../assets/tinymce/tinymce';
 // import { Editor } from 'tinymce';
 
 declare global {
@@ -12,9 +13,13 @@ interface editorProps {
 }
 
 interface Editor {
-  get: (arg0: string) => boolean;
+  get: (arg0: string) => e;
   init: (arg0: object) => void;
   remove: (arg0: string) => void;
+}
+interface e {
+  b: boolean;
+  remove: () => void;
 }
 
 const TinyMCEEditor = ({ value }: editorProps) => {
@@ -35,7 +40,7 @@ const TinyMCEEditor = ({ value }: editorProps) => {
 
     return () => {
       const editor = window.tinymce.get('text');
-      if (editor) {
+      if (typeof editor !== 'undefined') {
         editor.remove();
       }
     };
