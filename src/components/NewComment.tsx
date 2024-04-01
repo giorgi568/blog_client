@@ -4,9 +4,10 @@ import styles from '../styles/newComment.module.css';
 
 interface commentProps {
   postId?: string;
+  reloadFn?: () => void;
 }
 
-function NewComment({ postId }: commentProps) {
+function NewComment({ postId, reloadFn }: commentProps) {
   const [isActive, setIsActive] = useState(false);
   return (
     <div>
@@ -17,7 +18,6 @@ function NewComment({ postId }: commentProps) {
         style={{ width: 200 + 'px', float: 'left' }}
       >
         {isActive ? 'Discard' : 'Add A New Comment'}
-    
       </button>
       <br />
       {isActive && (
@@ -33,21 +33,22 @@ function NewComment({ postId }: commentProps) {
               formData.forEach((value, key) => {
                 formDataJson[key] = value as string;
               });
-              console.log(JSON.stringify(formDataJson));
 
-              const response = await fetch(
+              await fetch(
                 `https://furry-leeward-ricotta.glitch.me/post/${postId}/comment`,
                 {
                   method: 'POST',
                   mode: 'cors',
                   headers: {
-                    "Content-Type": "application/json",
+                    'Content-Type': 'application/json',
                   },
-              
+
                   body: JSON.stringify(formDataJson),
                 }
               );
-              console.log(response.url);
+              if (reloadFn) {
+                reloadFn();
+              }
             } catch (err) {
               console.error(err);
             }

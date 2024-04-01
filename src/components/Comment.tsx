@@ -27,6 +27,7 @@ async function fetchComments(postId: string | undefined) {
 }
 interface commentProps {
   postId?: string;
+  reloadNewComment?: boolean;
 }
 interface comment {
   text: string;
@@ -34,7 +35,7 @@ interface comment {
   timestamp: string;
 }
 
-function Comment({ postId }: commentProps) {
+function Comment({ postId, reloadNewComment }: commentProps) {
   const [comments, setComments] = useState([]);
   useEffect(() => {
     async function getComments(postId: string | undefined) {
@@ -42,7 +43,7 @@ function Comment({ postId }: commentProps) {
       setComments(comments);
     }
     getComments(postId);
-  }, [postId]);
+  }, [postId, reloadNewComment]);
   return (
     <div className={styles.comments}>
       {comments.map((comment: comment) => {

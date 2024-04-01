@@ -33,6 +33,10 @@ function Post() {
     timestamp: '',
   });
   const params = useParams();
+  const [reloadNewComment, setReloadNewComment] = useState(false);
+  const reloadFn = () => {
+    setReloadNewComment(!reloadNewComment);
+  };
   useEffect(() => {
     async function getPost(postId: string | undefined) {
       const post = await fetchPost(postId);
@@ -53,8 +57,8 @@ function Post() {
         </em>
       </div>
       <h3 className={styles.comments}>Comments:</h3>
-      <NewComment postId={params.id}></NewComment>
-      <Comment postId={params.id}></Comment>
+      <NewComment postId={params.id} reloadFn={reloadFn}></NewComment>
+      <Comment postId={params.id} reloadNewComment={reloadNewComment}></Comment>
     </div>
   );
 }

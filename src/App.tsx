@@ -13,8 +13,11 @@ async function fetchPosts() {
       throw new Error('Failed to fetch posts');
     }
     const parsedPosts = await posts.json();
-    console.log(parsedPosts.posts);
-    return parsedPosts.posts;
+    const postsObj = parsedPosts.posts;
+    const publishedPosts = postsObj.filter((post: postObj) => {
+      return post.published === true;
+    });
+    return publishedPosts;
   } catch (err) {
     console.error('Error fetching posts:', err);
   }
@@ -43,28 +46,34 @@ function App() {
   }, []);
 
   return (
-    <div className={styles.content}>
-      {posts.map((post: postObj, index: number) => {
-        return (
-          <div key={index} className={styles.postCard}>
-            <Link to={`/post/${post._id}`}>
-              <h3 className={styles.title}>{post.title}</h3>
-              <div className={styles.wrapper}>
-                {typeof post.author !== 'undefined' ? (
-                  <em>By {post.author?.username}</em>
-                ) : (
-                  'unknown'
-                )}
-                <em>
-                  {DateTime.fromISO(post.timestamp).toLocaleString(
-                    DateTime.DATETIME_MED
+    <div>
+      <nav>
+        <img src="..\public\article.svg" alt="image of an article" style={{float: 'left', width: '50px'}}/>
+        <h4 style={{ fontSize: '20px', margin: '0px' }}>Simple Blog</h4>
+      </nav>
+      <div className={styles.content}>
+        {posts.map((post: postObj, index: number) => {
+          return (
+            <div key={index} className={styles.postCard}>
+              <Link to={`/post/${post._id}`}>
+                <h3 className={styles.title}>{post.title}</h3>
+                <div className={styles.wrapper}>
+                  {typeof post.author !== 'undefined' ? (
+                    <em>By {post.author?.username}</em>
+                  ) : (
+                    'unknown'
                   )}
-                </em>
-              </div>
-            </Link>
-          </div>
-        );
-      })}
+                  <em>
+                    {DateTime.fromISO(post.timestamp).toLocaleString(
+                      DateTime.DATETIME_MED
+                    )}
+                  </em>
+                </div>
+              </Link>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
