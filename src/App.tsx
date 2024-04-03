@@ -48,7 +48,7 @@ function App() {
   return (
     <div>
       <nav>
-        <img src="..\public\article.svg" alt="image of an article" style={{float: 'left', width: '50px'}}/>
+        <img src="\article.svg" alt="image of an article" style={{float: 'left', width: '50px'}}/>
         <h4 style={{ fontSize: '20px', margin: '0px' }}>Simple Blog</h4>
       </nav>
       <div className={styles.content}>
